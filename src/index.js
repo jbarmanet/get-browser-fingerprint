@@ -23,8 +23,10 @@ export default ({ enableWebgl = false, debug = false } = {}) => {
         webdriver,
     } = window.navigator;
 
-    const plugins = Object.entries(window.navigator.plugins).map(([, plugin]) => plugin.name);
-    const mimeTypes = Object.entries(window.navigator.mimeTypes).map(([, mimeType]) => mimeType.type);
+    // Disabling plugins and mimeTypes as the info can vary
+    // depending how the browser window/tab is opened
+    //const plugins = Object.entries(window.navigator.plugins).map(([, plugin]) => plugin.name);
+    //const mimeTypes = Object.entries(window.navigator.mimeTypes).map(([, mimeType]) => mimeType.type);
 
     const { width, height, colorDepth, pixelDepth } = window.screen;
     const timezoneOffset = new Date().getTimezoneOffset();
@@ -47,9 +49,9 @@ export default ({ enableWebgl = false, debug = false } = {}) => {
         language,
         languages,
         maxTouchPoints,
-        mimeTypes,
+        //mimeTypes,
         platform,
-        plugins,
+        //plugins,
         product,
         productSub,
         userAgent,
