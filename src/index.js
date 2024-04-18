@@ -21,59 +21,14 @@ const getBrowserFingerprint = ({
   const timezoneOffset = new Date().getTimezoneOffset();
   const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
   const touchSupport = 'ontouchstart' in window;
-  const devicePixelRatio = window.devicePixelRatio;
+  const devicePixelRatio = enableScreen ? window.devicePixelRatio : undefined; // undefined will remove this from the stringify down here
 
-<<<<<<< HEAD
-    // Disabling plugins and mimeTypes as the info can vary
-    // depending how the browser window/tab is opened
-    //const plugins = Object.entries(window.navigator.plugins).map(([, plugin]) => plugin.name);
-    //const mimeTypes = Object.entries(window.navigator.mimeTypes).map(([, mimeType]) => mimeType.type);
-
-    const { width, height, colorDepth, pixelDepth } = window.screen;
-    const timezoneOffset = new Date().getTimezoneOffset();
-    const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-    const touchSupport = 'ontouchstart' in window;
-
-    const canvas = getCanvasID(debug);
-    const webgl = enableWebgl ? getWebglID(debug) : null;
-    const webglInfo = getWebglInfo(debug);
-
-    const data = {
-        devicePixelRatio,
-        appName,
-        appCodeName,
-        appVersion,
-        cookieEnabled,
-        deviceMemory,
-        doNotTrack,
-        hardwareConcurrency,
-        language,
-        languages,
-        maxTouchPoints,
-        //mimeTypes,
-        platform,
-        //plugins,
-        product,
-        productSub,
-        userAgent,
-        vendor,
-        vendorSub,
-        webdriver,
-        width,
-        height,
-        colorDepth,
-        pixelDepth,
-        timezoneOffset,
-        timezone,
-        touchSupport,
-=======
   const canvas = getCanvasID(debug);
   const webgl = enableWebgl ? getWebglID(debug) : undefined; // undefined will remove this from the stringify down here
   const webglInfo = enableWebgl ? getWebglInfo(debug) : undefined; // undefined will remove this from the stringify down here
 
   const data = hardwareOnly
     ? JSON.stringify({
->>>>>>> 93d630f4dd2f016215ad921f430b3c896f583b97
         canvas,
         colorDepth,
         deviceMemory,
