@@ -23,7 +23,7 @@ const getBrowserFingerprint = ({
   const touchSupport = 'ontouchstart' in window;
   const devicePixelRatio = enableScreen ? window.devicePixelRatio : undefined; // undefined will remove this from the stringify down here
 
-  const canvas = getCanvasID(debug);
+  const canvas = enableScreen ? getCanvasID(debug) : undefined;
   const webgl = enableWebgl ? getWebglID(debug) : undefined; // undefined will remove this from the stringify down here
   const webglInfo = enableWebgl ? getWebglInfo(debug) : undefined; // undefined will remove this from the stringify down here
 
