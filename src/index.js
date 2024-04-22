@@ -69,7 +69,7 @@ const getBrowserFingerprint = ({
       });
 
   const datastring = JSON.stringify(data, null, 4);
-  _dataString = datastring;
+  _dataString = JSON.stringify(data, null, 4);
   if (debug) console.log('fingerprint data', datastring);
 
   const result = murmurhash3_32_gc(datastring);
