@@ -1,29 +1,9 @@
-const getBrowserFingerprintRaw = ({
-    hardwareOnly = false,
-    enableWebgl = false,
-    enableScreen = true,
-    debug = false,
-  } = {}) => {
-    const datastring = getBrowserFingerprintDataString({hardwareOnly, enableWebgl, enableScreen, debug});
-    return datastring;
-  };
-
 const getBrowserFingerprint = ({
-    hardwareOnly = false,
-    enableWebgl = false,
-    enableScreen = true,
-    debug = false,
-  } = {}) => {
-    const datastring = getBrowserFingerprintDataString({hardwareOnly, enableWebgl, enableScreen, debug});
-    const result = murmurhash3_32_gc(datastring);
-    return result;
-  };
-
-const getBrowserFingerprintDataString = ({
   hardwareOnly = false,
   enableWebgl = false,
   enableScreen = true,
   debug = false,
+  raw = false,
 } = {}) => {
   const {
     cookieEnabled,
@@ -90,6 +70,7 @@ const getBrowserFingerprintDataString = ({
 
   const datastring = JSON.stringify(data, null, 4);
   if (debug) console.log('fingerprint data', datastring);
+  if (raw) return datastring;
   const result = murmurhash3_32_gc(datastring);
   return result;
 };
