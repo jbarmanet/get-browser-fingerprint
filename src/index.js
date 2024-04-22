@@ -76,7 +76,7 @@ const getBrowserFingerprint = ({
   return result;
 };
 
-export const getFingerprintDataSring = () => {
+export const getFingerprintDataString = () => {
     return _dataString;
 }
 
