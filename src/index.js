@@ -1,3 +1,4 @@
+var _dataString = undefined;
 const getBrowserFingerprint = ({
   hardwareOnly = false,
   enableWebgl = false,
@@ -68,12 +69,16 @@ const getBrowserFingerprint = ({
       });
 
   const datastring = JSON.stringify(data, null, 4);
-
+  _dataString = datastring;
   if (debug) console.log('fingerprint data', datastring);
 
   const result = murmurhash3_32_gc(datastring);
   return result;
 };
+
+export const getFingerprintDataSring = () => {
+    return _dataString;
+}
 
 export const getCanvasID = (debug) => {
   try {
